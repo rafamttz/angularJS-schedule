@@ -14,7 +14,6 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
     var carregarContatos = function() {
         contatosAPI.buscaContatos().then(function(response) {
             $scope.contatos = response.data;
-            console.log($scope.contatos);
             
         }).catch(function(response) {
             console.log(response);
@@ -24,7 +23,6 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
     var carregarOperadoras = function() {
         contatosAPI.buscaOperadoras().then(function(response) {
             $scope.operadoras = response.data;
-            console.log($scope.operadoras);
             
         }).catch(function(response) {
             console.log(response);

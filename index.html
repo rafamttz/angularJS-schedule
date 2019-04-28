@@ -13,6 +13,8 @@
         <script src="js\controllers\listaTelefonica.controller.js"></script>
         <script src="js\services\contato.service.js"></script>
         <script src="js\config\configContato.js"></script>
+        <script src="js\filters\app.filter.js"></script>
+
     </head>
     <body ng-controller="listaTelefonicaCtrl">
         <div class="jumbotron">
@@ -30,7 +32,7 @@
                 <tbody>
                     <tr ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:sentidoDeOrdenacao:false">
                         <td><input type="checkbox" ng-model="contato.selecionado"></td>
-                        <td>{{contato.nome | uppercase}}</td>
+                        <td>{{contato.nome | name}}</td>
                         <td>{{contato.telefone}}</td>
                         <td>{{contato.operadora.nome | lowercase}}</td>
                         <td>{{contato.data | date: 'dd/MM/yyyy'}}</td>
@@ -42,7 +44,7 @@
 
                 <input class="form-control" type="text" ng-model="contato.telefone" ng-required="true" name="telefone" placeholder="Telefone" ng-maxlength="10" ng-pattern="/^\d{4,5}-\d{4}$/">
 
-                <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome + '(' + (operadora.valor | currency) + ')' for operadora in operadoras | orderBy:'nome'">
+                <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome + '(' + (operadora.preco | currency) + ')' for operadora in operadoras | orderBy:'nome'">
                     <option value="">Selecione uma operadora</option>
                 </select>
 
