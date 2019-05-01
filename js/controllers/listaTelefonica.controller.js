@@ -16,6 +16,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
             $scope.contatos = response.data;
             
         }).catch(function(response) {
+            $scope.error = "Os contatos não foram carregados.";
             console.log(response);
         });
     }
